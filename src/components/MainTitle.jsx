@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export default function MainTitle() {
   return (
     <div className="hero__title-wrapper">
@@ -9,7 +11,9 @@ export default function MainTitle() {
         Our design projects are fresh and simple and will benefit your business
         greatly. Learn more about our work!
       </p>
-      <button className="hero__button">Views Stats</button>
+      <Link to="/stats" className="hero__button">
+        Views Stats
+      </Link>
     </div>
   );
 }
