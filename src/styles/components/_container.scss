@@ -1,0 +1,16 @@
+.container {
+  background-color: transparent;
+  margin: 0 auto;
+  padding: 0 15px 0 15px;
+
+  @include for-size(small) {
+    padding: 0 25px 0 25px;
+    max-width: 723px;
+  }
+  @include for-size(medium) {
+    width: 724px;
+  }
+  @include for-size(large) {
+    width: 1180px;
+  }
+}

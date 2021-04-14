@@ -1,13 +1,18 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+// Base
+// =========================================
+@import "./base/fonts";
+@import "../../node_modules/normalize-scss/sass/normalize";
+@import "./base/common";
+// Utils
+// =========================================
+@import "./utils/variables";
+@import "./utils/view-port-size";
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
+// Components
+// =========================================
+@import "./components/container";
+@import "./components/header";
+@import "./components/main";
+@import "./components/products";
+@import "./components/form";
+@import "./components/footer";

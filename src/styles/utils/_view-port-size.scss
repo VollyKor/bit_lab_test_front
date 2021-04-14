@@ -1,0 +1,15 @@
+@mixin for-size($size) {
+  @if $size == small {
+    @media screen and (max-width: 767px) {
+      @content;
+    }
+  } @else if $size == medium {
+    @media screen and (min-width: 768px) and (max-width: 1180px) {
+      @content;
+    }
+  } @else if $size == large {
+    @media screen and (min-width: 1180px) {
+      @content;
+    }
+  }
+}

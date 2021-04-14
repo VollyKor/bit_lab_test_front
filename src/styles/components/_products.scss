@@ -1,0 +1,106 @@
+.products {
+  margin-bottom: 128px;
+}
+
+.products__title {
+  max-width: 500px;
+
+  margin: 0 auto;
+  margin-bottom: 24px;
+
+  font-family: "MontserratRegular";
+  font-size: 32px;
+  line-height: 39px;
+  text-align: center;
+
+  color: $black;
+}
+
+.products__title-accent {
+  font-family: "MontserratBold";
+}
+
+.products__subtitle {
+  max-width: 750px;
+
+  margin: 0 auto;
+  margin-bottom: 40px;
+
+  font-size: 20px;
+  line-height: 142%;
+  text-align: center;
+  color: $grey;
+}
+
+.products__list {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  justify-content: space-between;
+
+  @include for-size(small) {
+    display: block;
+  }
+}
+
+.products__item {
+  background-color: $white;
+  max-width: 380px;
+
+  padding: 48px 32px;
+
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.16);
+  border-radius: 32px;
+
+  @include for-size(medium) {
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+  }
+
+  @include for-size(large) {
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+  }
+
+  @include for-size(small) {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
+}
+
+.product__item-thumb {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 106px;
+  height: 96px;
+
+  margin: 0 auto;
+  background-image: url("../images/Vector.svg");
+
+  margin-bottom: 40px;
+}
+
+.products__item-subtitle {
+  font-family: "MontserratBold";
+  margin-bottom: 16px;
+  text-align: center;
+
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+
+  color: $black;
+}
+
+.products__item-text {
+  font-size: 16px;
+  line-height: 142%;
+  color: $grey;
+
+  text-align: center;
+}
