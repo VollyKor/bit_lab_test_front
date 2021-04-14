@@ -12,6 +12,14 @@
   }
 }
 
+.hero__thumb {
+  @include for-size(large) {
+    margin-right: 80px;
+  }
+  @include for-size(medium) {
+    margin-right: 80px;
+  }
+}
 .hero__title-wrapper {
   max-width: 600px;
 }

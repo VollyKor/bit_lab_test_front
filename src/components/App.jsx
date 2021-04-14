@@ -7,7 +7,7 @@ export default function App() {
       <div className="header__bckg-wrapper">
         <Header />
         <div className="footer__bckg-wrapper">
-          <Main></Main>
+          <Main />
           <Footer />
         </div>
       </div>
