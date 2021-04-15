@@ -7,6 +7,7 @@ import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
 import StatsTable from './StatsTable';
+import SinglePage from './UserPage';
 
 export default function App() {
   return (
@@ -22,7 +23,12 @@ export default function App() {
           <StatsHeader />
           <Container>
             <NavBarStats />
-            <StatsTable />
+            <Route path="/stats" exact>
+              <StatsTable />
+            </Route>
+            <Route path="/stats/user/:id">
+              <SinglePage />
+            </Route>
           </Container>
           <StatsFooter />
         </Route>

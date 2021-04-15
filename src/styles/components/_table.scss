@@ -4,10 +4,84 @@
 .table__head-cell {
   padding: 14px 24px;
 
+  font-family: "MontserratRegular";
+  font-size: 16px;
+  line-height: 20px;
+
+  color: $white;
+
   &:first-child {
     border-top-left-radius: 5px;
   }
   &:last-child {
     border-top-right-radius: 5px;
+  }
+}
+
+.table__title {
+  margin-top: 24px;
+  margin-bottom: 16px;
+
+  font-family: "MontserratBold";
+  font-size: 32px;
+  line-height: 39px;
+}
+
+.paginate__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  list-style: none;
+
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.paginate__page {
+  border: 2px solid #f1f1f1;
+  border-radius: 8px;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #3a80ba;
+    border-color: #3a80ba;
+
+    color: $white;
+  }
+
+  &:not(:last-child) {
+    margin-right: 8px;
+  }
+
+  &.active {
+    border-radius: 8px;
+    background-color: #3a80ba;
+    color: $white;
+    border-color: #3a80ba;
+  }
+}
+.paginate__page a {
+  display: inline-block;
+  padding: 12px 19px;
+
+  outline: none;
+}
+
+.paginate_arrow {
+  width: 12px;
+  height: 24px;
+
+  margin-right: 8px;
+  padding: 14px 16px;
+
+  stroke: #f1f1f1;
+
+  &.right {
+    transform: rotate(180deg);
+  }
+
+  &:hover {
+    stroke: #3a80ba;
   }
 }

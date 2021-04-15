@@ -4,22 +4,25 @@ import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import * as req from '../service/axios';
 import StatsTableRow from './StatstableRow';
+import { ReactComponent as Logo } from '../styles/images/arrow-pagination.svg';
 
 export default function StatsTable() {
   const [totalPages, setTotalPages] = useState(0);
   const [page, setPage] = useState(0);
   const [data, setData] = useState([]);
+
   const history = useHistory();
 
   const query = queryString.parse(history.location.search);
   const { pathname } = history.location;
+  const { limit = 30 } = query;
 
-  const maxLimit = query.limit > 50 ? 50 : query.limit;
+  const maxLimit = limit > 50 ? 50 : limit;
 
   useEffect(() => {
     if (page !== query.page) {
       req.getAll(page, maxLimit).then(stats => {
-        setTotalPages(data.totalPages);
+        setTotalPages(stats.totalPages);
         setData(stats.data);
         setPage(page);
       });
@@ -27,7 +30,8 @@ export default function StatsTable() {
   }, [query.page]);
 
   const HandleChange = ({ selected }) => {
-    history.push(`${pathname}?page=${selected}&limit=${query.limit}`);
+    setPage(selected + 1);
+    history.push(`${pathname}?page=${selected + 1}&limit=${limit}`);
   };
 
   return (
@@ -50,21 +54,22 @@ export default function StatsTable() {
           {data && <StatsTableRow data={data} />}
         </tbody>
       </table>
-      <ReactPaginate
-        pageCount={totalPages}
-        pageRangeDisplayed={3}
-        marginPagesDisplayed={1}
-        initialPage={page - 1}
-        disableInitialCallback
-        onPageChange={HandleChange}
-        // containerClassName={s.pagination}
-        // pageClassName={s.page_item}
-        // activeClassName={s.page_item__active}
-        // previousClassName={s.previousButton}
-        // nextClassName={s.nextButton}
-        // pageLinkClassName={s.page_link}
-        // breakLinkClassName={s.ellipsis}
-      />
+      {data && (
+        <ReactPaginate
+          pageCount={totalPages}
+          pageRangeDisplayed={3}
+          marginPagesDisplayed={1}
+          initialPage={query.page - 1}
+          disableInitialCallback
+          onPageChange={HandleChange}
+          containerClassName="paginate__container"
+          pageClassName="paginate__page"
+          activeClassName="paginate__page active"
+          nextLabel={<Logo className="paginate_arrow right" />}
+          previousLabel={<Logo className="paginate_arrow" />}
+          breakClassName="paginate__page"
+        />
+      )}
     </>
   );
 }

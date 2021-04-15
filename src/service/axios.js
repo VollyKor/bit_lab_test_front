@@ -11,6 +11,5 @@ export const getDataById = async userId => {
   const { data } = await axios.get(
     `https://bit-lab-test.herokuapp.com/stats/${userId}`,
   );
-  console.log('axios', data);
-  return data;
+  return data.data;
 };

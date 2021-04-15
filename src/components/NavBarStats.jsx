@@ -2,9 +2,8 @@ import { NavLink, useLocation } from 'react-router-dom';
 
 export default function NavBarStats() {
   const location = useLocation();
-  console.log(location);
 
-  const isUserPage = location.pathname.includes('/stats/user');
+  const isUserPageVisible = location.pathname.includes('/stats/user');
 
   return (
     <nav className="navbar">
@@ -27,10 +26,10 @@ export default function NavBarStats() {
             className="navbar__link"
             activeClassName="active"
           >
-            User Statistics
+            User statistics
           </NavLink>
         </li>
-        {isUserPage && (
+        {isUserPageVisible && (
           <li className="navbar__item">
             <span className="navarrow">{'>'}</span>
             <NavLink
