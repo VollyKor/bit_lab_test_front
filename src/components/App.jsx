@@ -1,5 +1,8 @@
 import { Route, Switch } from 'react-router-dom';
 
+import StatsFooter from './StatsFooter';
+import StatsHeader from './StatsHeader';
+import Container from './Container';
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
@@ -8,17 +11,17 @@ export default function App() {
   return (
     <>
       <Switch>
-        <Route to="/stats" exact>
-          <Header />
-          789
+        <Route path="/stats/:userId">
+          <Container>
+            <StatsHeader />
+          </Container>
         </Route>
-
-        <Route to="/stats/:userId">
-          <Header />
-          123
+        <Route path="/stats" exact>
+          <StatsHeader />
+          таблица
+          <StatsFooter />
         </Route>
-
-        <Route to="/" exact>
+        <Route path="/" exact>
           <div className="header__bckg-wrapper">
             <Header />
             <div className="footer__bckg-wrapper">
