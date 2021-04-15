@@ -25,6 +25,11 @@ img {
   display: block;
 }
 
+ul {
+  padding-left: 0;
+  margin: 0;
+}
+
 .header__bckg-wrapper {
   background-image: url("../images/header-bckg.svg");
   background-position: top 0;

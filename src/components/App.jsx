@@ -1,24 +1,29 @@
 import { Route, Switch } from 'react-router-dom';
-
+import NavBarStats from './NavBarStats';
 import StatsFooter from './StatsFooter';
 import StatsHeader from './StatsHeader';
 import Container from './Container';
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
+import StatsTable from './StatsTable';
 
 export default function App() {
   return (
     <>
       <Switch>
-        <Route path="/stats/:userId">
+        {/* <Route path="/stats/:userId" >
           <Container>
             <StatsHeader />
           </Container>
-        </Route>
-        <Route path="/stats" exact>
+        </Route> */}
+
+        <Route path="/stats">
           <StatsHeader />
-          таблица
+          <Container>
+            <NavBarStats />
+            <StatsTable />
+          </Container>
           <StatsFooter />
         </Route>
         <Route path="/" exact>

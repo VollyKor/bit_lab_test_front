@@ -1,0 +1,13 @@
+.table__head {
+  background-color: #3a80ba;
+}
+.table__head-cell {
+  padding: 14px 24px;
+
+  &:first-child {
+    border-top-left-radius: 5px;
+  }
+  &:last-child {
+    border-top-right-radius: 5px;
+  }
+}
