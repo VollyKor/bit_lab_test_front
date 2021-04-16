@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.8c15cbbd.chunk.css",
+    "main.js": "/static/js/main.f5b8d782.chunk.js",
+    "main.js.map": "/static/js/main.f5b8d782.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.31b3c72c.js",
+    "runtime-main.js.map": "/static/js/runtime-main.31b3c72c.js.map",
+    "static/js/2.45920bd4.chunk.js": "/static/js/2.45920bd4.chunk.js",
+    "static/js/2.45920bd4.chunk.js.map": "/static/js/2.45920bd4.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.8c15cbbd.chunk.css.map": "/static/css/main.8c15cbbd.chunk.css.map",
+    "static/js/2.45920bd4.chunk.js.LICENSE.txt": "/static/js/2.45920bd4.chunk.js.LICENSE.txt",
+    "static/media/index.scss": "/static/media/header-bckg.78e33f52.svg",
+    "static/media/arrow-pagination.79c7e2e4.svg": "/static/media/arrow-pagination.79c7e2e4.svg",
+    "static/media/devices.fed80596.svg": "/static/media/devices.fed80596.svg",
+    "static/media/lock.cadfbe34.svg": "/static/media/lock.cadfbe34.svg",
+    "static/media/mobilePhone.534c1090.png": "/static/media/mobilePhone.534c1090.png",
+    "static/media/pencils.d511c1f2.svg": "/static/media/pencils.d511c1f2.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.31b3c72c.js",
+    "static/js/2.45920bd4.chunk.js",
+    "static/css/main.8c15cbbd.chunk.css",
+    "static/js/main.f5b8d782.chunk.js"
+  ]
+}
