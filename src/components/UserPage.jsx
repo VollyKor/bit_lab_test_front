@@ -47,6 +47,7 @@ export default function SinglePage() {
   useEffect(() => {
     if (!isNaN(numberId)) {
       getDataById(numberId).then(data => {
+        console.log(data);
         setData(data.data);
         setUser(data.data[0]);
       });
@@ -68,14 +69,14 @@ export default function SinglePage() {
           <CartesianGrid vertical={false} stroke="#F1F1F1" />
           <Line
             type="monotone"
-            dataKey="total_click"
+            dataKey="clicks"
             strokeWidth={4}
             stroke="#3A80BA"
           />
           <Tooltip />
           <Legend />
           <XAxis dataKey="date" />
-          <YAxis dataKey="total_click" />
+          <YAxis dataKey="clicks" />
         </LineChart>
       </div>
       <div className="graph">
@@ -90,13 +91,13 @@ export default function SinglePage() {
             type="monotone"
             strokeWidth={4}
             legendType="plainline"
-            dataKey="total_page_views"
+            dataKey="page_views"
             stroke="#3A80BA"
           />
           <Tooltip />
           <Legend />
           <XAxis dataKey="date" />
-          <YAxis dataKey="total_page_views" />
+          <YAxis dataKey="page_views" />
         </LineChart>
       </div>
     </>
