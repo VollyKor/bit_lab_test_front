@@ -19,4 +19,26 @@
   line-height: 20px;
 
   color: #1a1a1a;
+
+  @include for-size(medium) {
+    padding: 8px 12px;
+  }
+  @include for-size(small) {
+    padding: 4px 8px;
+  }
+}
+
+.table__body-cell.ip_address,
+.table__body-cell.email {
+  @include for-size(medium) {
+    display: none;
+  }
+}
+
+.table__body-cell.email,
+.table__body-cell.ip_address,
+.table__body-cell.gender {
+  @include for-size(small) {
+    display: none;
+  }
 }

@@ -17,20 +17,41 @@ export default function SinglePage() {
 
   const match = useRouteMatch();
 
+  const GraphSize = () => {
+    const windowSize = window.innerWidth;
+
+    let width = 0;
+    let height = 0;
+
+    if (windowSize > 1180) {
+      width = 1000;
+      height = 400;
+    } else if (windowSize > 780) {
+      width = 600;
+      height = 200;
+    } else if (windowSize > 380) {
+      width = 300;
+      height = 150;
+    }
+
+    return {
+      width,
+      height,
+    };
+  };
+
   // const { first_name, last_name } = userData;
   const { id = 1 } = match.params;
   const numberId = Number(id);
-  console.log(numberId);
 
   useEffect(() => {
-    if (typeof numberId !== NaN) {
-      getDataById(id).then(data => {
-        console.log(data.data[0]);
+    if (!isNaN(numberId)) {
+      getDataById(numberId).then(data => {
         setData(data.data);
         setUser(data.data[0]);
       });
     }
-  }, [id]);
+  }, [numberId]);
 
   return user ? (
     <>
@@ -39,7 +60,11 @@ export default function SinglePage() {
       </div>
       <div className="graph">
         <h3 className="user__subtitle">Clicks</h3>
-        <LineChart width={1000} height={400} data={data}>
+        <LineChart
+          width={GraphSize().width}
+          height={GraphSize().height}
+          data={data}
+        >
           <CartesianGrid vertical={false} stroke="#F1F1F1" />
           <Line
             type="monotone"
@@ -55,7 +80,11 @@ export default function SinglePage() {
       </div>
       <div className="graph">
         <h3 className="user__subtitle">Vievs</h3>
-        <LineChart width={1000} height={400} data={data}>
+        <LineChart
+          width={GraphSize().width}
+          height={GraphSize().height}
+          data={data}
+        >
           <CartesianGrid vertical={false} stroke="#F1F1F1" />
           <Line
             type="monotone"

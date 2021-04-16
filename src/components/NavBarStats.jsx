@@ -22,7 +22,7 @@ export default function NavBarStats() {
           <span className="navarrow">{'>'}</span>
           <NavLink
             exact
-            to="/stats"
+            to="/stats?page=1&limit=50"
             className="navbar__link"
             activeClassName="active"
           >

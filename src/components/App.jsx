@@ -32,6 +32,7 @@ export default function App() {
           </Container>
           <StatsFooter />
         </Route>
+
         <Route path="/" exact>
           <div className="header__bckg-wrapper">
             <Header />

@@ -40,12 +40,12 @@ export default function StatsTable() {
       <table className="table">
         <thead className="table__head">
           <tr className="table__head-row">
-            <td className="table__head-cell">id</td>
+            <td className="table__head-cell id">id</td>
             <td className="table__head-cell">First name</td>
             <td className="table__head-cell">Last name</td>
-            <td className="table__head-cell">Email</td>
-            <td className="table__head-cell">Gender</td>
-            <td className="table__head-cell">IP address</td>
+            <td className="table__head-cell email">Email</td>
+            <td className="table__head-cell gender">Gender</td>
+            <td className="table__head-cell ip_address">IP address</td>
             <td className="table__head-cell">Total clicks</td>
             <td className="table__head-cell">Total page views</td>
           </tr>
