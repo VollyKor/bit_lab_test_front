@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useRouteMatch } from 'react-router-dom';
 import { getDataById, getDataByDate } from '../service/axios';
 import DatePicker from 'react-datepicker';
+import axios from 'axios';
 import {
   LineChart,
   Line,
@@ -12,6 +13,15 @@ import {
   Tooltip,
   Legend,
 } from 'recharts';
+
+//  example of unvalid data
+// ====================================
+// axios
+//   .get('http://localhost:3010/stats/5?dateFrom=2010-10-01&dateTo=2019-10-3')
+//   .then(
+//     res => console.log('e', res),
+//     err => alert(`Message from server: ${err.response.data.message}`),
+//   );
 
 export default function SinglePage() {
   const [startDateFrom, setStartDateFrom] = useState(new Date());
