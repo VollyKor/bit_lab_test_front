@@ -91,6 +91,10 @@
   padding: 12px 19px;
 
   outline: none;
+
+  @include for-size(small) {
+    padding: 4px 6px;
+  }
 }
 
 .paginate_arrow {

@@ -11,7 +11,7 @@ export default function MainTitle() {
         Our design projects are fresh and simple and will benefit your business
         greatly. Learn more about our work!
       </p>
-      <Link to="/stats?page=1&limit=50" className="hero__button">
+      <Link to="/stats?page=1&limit=20" className="hero__button">
         Views Stats
       </Link>
     </div>

@@ -1,7 +1,7 @@
 import queryString from 'query-string';
 import ReactPaginate from 'react-paginate';
 import { useEffect, useState } from 'react';
-import { useHistory, useRouteMatch } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import * as req from '../service/axios';
 import StatsTableRow from './StatstableRow';
 import { ReactComponent as Logo } from '../styles/images/arrow-pagination.svg';
@@ -15,7 +15,6 @@ export default function StatsTable() {
 
   const query = queryString.parse(history.location.search);
   const { pathname } = history.location;
-  console.log(history.location);
   const { limit = 30 } = query;
 
   const maxLimit = limit > 50 ? 50 : limit;
