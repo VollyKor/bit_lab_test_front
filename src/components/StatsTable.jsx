@@ -27,6 +27,7 @@ export default function StatsTable() {
         setPage(page);
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query.page]);
 
   const HandleChange = ({ selected }) => {

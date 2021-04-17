@@ -1,9 +1,9 @@
 import 'react-datepicker/dist/react-datepicker.css';
 import { useEffect, useState } from 'react';
-import { useHistory, useRouteMatch } from 'react-router-dom';
+import { useRouteMatch } from 'react-router-dom';
 import { getDataById, getDataByDate } from '../service/axios';
 import DatePicker from 'react-datepicker';
-import axios from 'axios';
+import getGraphSize from '../service/getGraphSize';
 import {
   LineChart,
   Line,
@@ -39,76 +39,21 @@ export default function SinglePage() {
     return dateObj.toISOString().substring(0, 10);
   }
 
-  function dateRange(startDate, endDate, steps = 1) {
-    const dateArray = [];
-    let currentDate = new Date(startDate);
-
-    while (currentDate <= new Date(endDate)) {
-      dateArray.push(new Date(currentDate));
-      currentDate.setUTCDate(currentDate.getUTCDate() + steps);
-    }
-
-    return dateArray;
-  }
-
-  const GraphSize = () => {
-    const windowSize = window.innerWidth;
-
-    let width = 0;
-    let height = 0;
-
-    if (windowSize > 1180) {
-      width = 1000;
-      height = 400;
-    } else if (windowSize > 780) {
-      width = 600;
-      height = 200;
-    } else if (windowSize > 380) {
-      width = 300;
-      height = 150;
-    }
-
-    return {
-      width,
-      height,
-    };
-  };
-
   useEffect(() => {
-    function getNewDataArr(dataArr) {
-      const datesArr = dateRange(startDateFrom, startDateTo);
-      console.log(datesArr);
-      const newDataArr = datesArr.map(e => {
-        const dateArrEl = getFormattedData(e);
-
-        const elIndata = dataArr.find(e => {
-          const dateFromUser = getFormattedData(new Date(e.date));
-          return dateFromUser === dateArrEl;
-        });
-        if (elIndata) return elIndata;
-
-        return { clicks: 0, page_views: 0, date: dateArrEl };
-      });
-
-      console.log(newDataArr);
-
-      return newDataArr;
-    }
-
     if (!isNaN(numberId)) {
       getDataById(numberId)
-        .then(({ data }) => {
-          // setStartDateFrom(new Date(data[0].date));
-          // setStartDateTo(new Date(data[data.length - 1].date));
+        .then(({ data, user }) => {
+          // for filtering data only from back
 
-          setUser(data[0]);
+          setStartDateFrom(new Date(data[0].date));
+          setStartDateTo(new Date(data[data.length - 1].date));
 
-          const newData = getNewDataArr(data);
-          setData(newData);
+          setUser(user);
+          setData(data);
         })
         .catch(e => console.log(e));
     }
-  }, [numberId, startDateFrom, startDateTo]);
+  }, [numberId]);
 
   function handleClick() {
     getDataByDate(
@@ -159,8 +104,8 @@ export default function SinglePage() {
       <div className="graph">
         <h3 className="user__subtitle">Clicks</h3>
         <LineChart
-          width={GraphSize().width}
-          height={GraphSize().height}
+          width={getGraphSize().width}
+          height={getGraphSize().height}
           data={data}
         >
           <CartesianGrid vertical={false} stroke="#F1F1F1" />
@@ -179,8 +124,8 @@ export default function SinglePage() {
       <div className="graph">
         <h3 className="user__subtitle">Vievs</h3>
         <LineChart
-          width={GraphSize().width}
-          height={GraphSize().height}
+          width={getGraphSize().width}
+          height={getGraphSize().height}
           data={data}
         >
           <CartesianGrid vertical={false} stroke="#F1F1F1" />
