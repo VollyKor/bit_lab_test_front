@@ -23,3 +23,83 @@
   width: 1000px;
   height: 400px;
 }
+
+.date {
+  margin: 0 auto;
+
+  @include for-size(large) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__wrapper {
+    display: flex;
+    padding: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+
+    @include for-size(medium) {
+      justify-content: center;
+      align-items: center;
+    }
+    @include for-size(small) {
+      align-items: flex-end;
+    }
+  }
+
+  &__desc {
+    font-family: "MontserratRegular";
+    margin: 0 10px;
+
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  &__btn {
+    padding: 11px 18px;
+    margin-left: 20px;
+
+    font-size: 18px;
+    line-height: 22px;
+
+    background: #3a80ba;
+    border-radius: 8px;
+    color: $white;
+    outline: none;
+    &:hover,
+    &:focus {
+      box-shadow: 0px 4px 16px rgba(0, 0, 0, 1);
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+    @include for-size(small) {
+      margin-left: 5px;
+    }
+  }
+
+  &__input {
+    padding: 10px 5px;
+    width: 150px;
+    border-radius: 8px;
+
+    font-family: "MontserratRegular";
+    text-align: center;
+    font-size: 18px;
+    line-height: 22px;
+
+    border: 3px solid #3a80ba;
+    outline-color: transparent;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:hover,
+    &:focus {
+      box-shadow: 0px 4px 16px rgba(0, 0, 0, 1);
+    }
+  }
+}

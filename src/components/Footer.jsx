@@ -4,9 +4,9 @@ export default function Footer() {
   return (
     <Container>
       <footer className="footer">
-        <span className="footer__logo">AppCo</span>
-        <span className="footer__rights">All rights reserved by ThemeTags</span>
-        <span className="footer__trademark">Copyrights © 2019.</span>
+        <p className="footer__logo">AppCo</p>
+        <p className="footer__rights">All rights reserved by ThemeTags</p>
+        <p className="footer__trademark">Copyrights © 2019.</p>
       </footer>
     </Container>
   );

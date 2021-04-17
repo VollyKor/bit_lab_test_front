@@ -12,3 +12,14 @@ export const getDataById = async userId => {
   const { data } = await axios.get(`/stats/${userId}`);
   return data;
 };
+
+export const getDataByDate = async (
+  userId,
+  dateFrom = '2019-08-10',
+  dateTo = '2019-12-10',
+) => {
+  const { data } = await axios.get(
+    `/stats/${userId}?dateFrom=${dateFrom}&dateTo=${dateTo} `,
+  );
+  return data;
+};

@@ -2,6 +2,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @include for-size(small) {
+    text-align: center;
+    display: block;
+    padding-bottom: 15px;
+  }
+
+  & .stats {
+    color: white;
+  }
 }
 
 .footer__logo {

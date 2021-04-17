@@ -5,11 +5,11 @@ export default function StatsFooter() {
     <div className="stats__footer-wrapper">
       <Container>
         <footer className="footer">
-          <span className="footer__logo">AppCo</span>
-          <span className="footer__rights">
+          <p className="footer__logo stats">AppCo</p>
+          <p className="footer__rights stats">
             All rights reserved by ThemeTags
-          </span>
-          <span className="footer__trademark">Copyrights © 2019.</span>
+          </p>
+          <p className="footer__trademark stats">Copyrights © 2019.</p>
         </footer>
       </Container>
     </div>

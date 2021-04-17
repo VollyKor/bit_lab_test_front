@@ -1,6 +1,8 @@
+import 'react-datepicker/dist/react-datepicker.css';
 import { useEffect, useState } from 'react';
 import { useRouteMatch } from 'react-router-dom';
-import { getDataById } from '../service/axios';
+import { getDataById, getDataByDate } from '../service/axios';
+import DatePicker from 'react-datepicker';
 import {
   LineChart,
   Line,
@@ -12,10 +14,19 @@ import {
 } from 'recharts';
 
 export default function SinglePage() {
+  const [startDateFrom, setStartDateFrom] = useState(new Date());
+  const [startDateTo, setStartDateTo] = useState(new Date());
   const [data, setData] = useState(null);
   const [user, setUser] = useState(null);
 
   const match = useRouteMatch();
+
+  const { id = 1 } = match.params;
+  const numberId = Number(id);
+
+  function getFormattedData(dateObj) {
+    return dateObj.toISOString().substring(0, 10);
+  }
 
   const GraphSize = () => {
     const windowSize = window.innerWidth;
@@ -40,24 +51,65 @@ export default function SinglePage() {
     };
   };
 
-  // const { first_name, last_name } = userData;
-  const { id = 1 } = match.params;
-  const numberId = Number(id);
-
   useEffect(() => {
     if (!isNaN(numberId)) {
-      getDataById(numberId).then(data => {
-        console.log(data);
-        setData(data.data);
-        setUser(data.data[0]);
-      });
+      getDataById(numberId)
+        .then(({ data }) => {
+          setStartDateFrom(new Date(data[0].date));
+          setStartDateTo(new Date(data[data.length - 1].date));
+
+          setData(data);
+          setUser(data[0]);
+        })
+        .catch(e => console.log(e));
     }
   }, [numberId]);
 
+  function handleClick() {
+    getDataByDate(
+      numberId,
+      getFormattedData(startDateFrom),
+      getFormattedData(startDateTo),
+    ).then(({ data }) => {
+      setData(data);
+    });
+  }
+
   return user ? (
     <>
-      <div>
+      <div className="date">
         <h2 className="user__title">{`${user.first_name} ${user.last_name}`}</h2>
+        <div className="date__wrapper">
+          <div>
+            <span className="date__desc">From</span>
+            <DatePicker
+              closeOnScroll={true}
+              selected={startDateFrom}
+              selectsStart
+              className="date__input"
+              onChange={date => {
+                setStartDateFrom(date);
+              }}
+              dateFormat="yyyy-MM-dd"
+            />
+          </div>
+          <div>
+            <span className="date__desc">to</span>
+            <DatePicker
+              closeOnScroll={true}
+              selected={startDateTo}
+              selectsEnd
+              onChange={date => {
+                setStartDateTo(date);
+              }}
+              dateFormat="yyyy-MM-dd"
+              className="date__input"
+            />
+          </div>
+          <button className="date__btn" onClick={handleClick}>
+            Filter
+          </button>
+        </div>
       </div>
       <div className="graph">
         <h3 className="user__subtitle">Clicks</h3>
