@@ -1,6 +1,6 @@
 import 'react-datepicker/dist/react-datepicker.css';
 import { useEffect, useState } from 'react';
-import { useRouteMatch } from 'react-router-dom';
+import { useHistory, useRouteMatch } from 'react-router-dom';
 import { getDataById, getDataByDate } from '../service/axios';
 import DatePicker from 'react-datepicker';
 import axios from 'axios';

@@ -3,6 +3,12 @@ import { NavLink, useLocation } from 'react-router-dom';
 export default function NavBarStats() {
   const location = useLocation();
 
+  const lastPageLink = location?.state?.lastPage;
+
+  const linkPath = lastPageLink
+    ? `${lastPageLink.pathname + lastPageLink.search}`
+    : '/stats?page=1&limit=50';
+
   const isUserPageVisible = location.pathname.includes('/stats/user');
 
   return (
@@ -22,7 +28,7 @@ export default function NavBarStats() {
           <span className="navarrow">{'>'}</span>
           <NavLink
             exact
-            to="/stats?page=1&limit=50"
+            to={linkPath}
             className="navbar__link"
             activeClassName="active"
           >

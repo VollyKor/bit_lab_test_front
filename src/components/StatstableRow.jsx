@@ -5,7 +5,9 @@ export default function StatsTableRow({ data }) {
   const match = useRouteMatch();
 
   function handleClick(e) {
-    history.push(`${match.url}/user/${e.user_id}`);
+    history.push(`${match.url}/user/${e.user_id}`, {
+      lastPage: history.location,
+    });
   }
   return data.map(e => {
     return (
