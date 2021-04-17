@@ -24,8 +24,9 @@ import {
 //   );
 
 export default function SinglePage() {
-  const [startDateFrom, setStartDateFrom] = useState(new Date());
-  const [startDateTo, setStartDateTo] = useState(new Date());
+  const [startDateFrom, setStartDateFrom] = useState(new Date('2019-10-15'));
+  const [startDateTo, setStartDateTo] = useState(new Date('2019-10-21'));
+
   const [data, setData] = useState(null);
   const [user, setUser] = useState(null);
 
@@ -36,6 +37,18 @@ export default function SinglePage() {
 
   function getFormattedData(dateObj) {
     return dateObj.toISOString().substring(0, 10);
+  }
+
+  function dateRange(startDate, endDate, steps = 1) {
+    const dateArray = [];
+    let currentDate = new Date(startDate);
+
+    while (currentDate <= new Date(endDate)) {
+      dateArray.push(new Date(currentDate));
+      currentDate.setUTCDate(currentDate.getUTCDate() + steps);
+    }
+
+    return dateArray;
   }
 
   const GraphSize = () => {
@@ -62,18 +75,40 @@ export default function SinglePage() {
   };
 
   useEffect(() => {
+    function getNewDataArr(dataArr) {
+      const datesArr = dateRange(startDateFrom, startDateTo);
+      console.log(datesArr);
+      const newDataArr = datesArr.map(e => {
+        const dateArrEl = getFormattedData(e);
+
+        const elIndata = dataArr.find(e => {
+          const dateFromUser = getFormattedData(new Date(e.date));
+          return dateFromUser === dateArrEl;
+        });
+        if (elIndata) return elIndata;
+
+        return { clicks: 0, page_views: 0, date: dateArrEl };
+      });
+
+      console.log(newDataArr);
+
+      return newDataArr;
+    }
+
     if (!isNaN(numberId)) {
       getDataById(numberId)
         .then(({ data }) => {
-          setStartDateFrom(new Date(data[0].date));
-          setStartDateTo(new Date(data[data.length - 1].date));
+          // setStartDateFrom(new Date(data[0].date));
+          // setStartDateTo(new Date(data[data.length - 1].date));
 
-          setData(data);
           setUser(data[0]);
+
+          const newData = getNewDataArr(data);
+          setData(newData);
         })
         .catch(e => console.log(e));
     }
-  }, [numberId]);
+  }, [numberId, startDateFrom, startDateTo]);
 
   function handleClick() {
     getDataByDate(
