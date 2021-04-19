@@ -13,12 +13,6 @@ export default function App() {
   return (
     <>
       <Switch>
-        {/* <Route path="/stats/:userId" >
-          <Container>
-            <StatsHeader />
-          </Container>
-        </Route> */}
-
         <Route path="/stats">
           <StatsHeader />
           <Container>
@@ -33,6 +27,8 @@ export default function App() {
           <StatsFooter />
         </Route>
 
+        {/*  Main pag
+============================================== */}
         <Route path="/" exact>
           <div className="header__bckg-wrapper">
             <Header />

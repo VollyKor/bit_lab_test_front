@@ -4,6 +4,7 @@ import { useRouteMatch } from 'react-router-dom';
 import { getDataById, getDataByDate } from '../service/axios';
 import DatePicker from 'react-datepicker';
 import getGraphSize from '../service/getGraphSize';
+import Loader from './Loader';
 import {
   LineChart,
   Line,
@@ -24,6 +25,8 @@ import {
 //   );
 
 export default function SinglePage() {
+  const [isLoading, setIsLoading] = useState(true);
+
   const [startDateFrom, setStartDateFrom] = useState(new Date('2019-10-15'));
   const [startDateTo, setStartDateTo] = useState(new Date('2019-10-21'));
 
@@ -50,6 +53,8 @@ export default function SinglePage() {
 
           setUser(user);
           setData(data);
+
+          setIsLoading(false);
         })
         .catch(e => console.log(e));
     }
@@ -65,7 +70,9 @@ export default function SinglePage() {
     });
   }
 
-  return user ? (
+  return isLoading ? (
+    <Loader />
+  ) : (
     <>
       <div className="date">
         <h2 className="user__title">{`${user.first_name} ${user.last_name}`}</h2>
@@ -143,7 +150,5 @@ export default function SinglePage() {
         </LineChart>
       </div>
     </>
-  ) : (
-    <div>UserId is not a valid number or data is absent</div>
   );
 }

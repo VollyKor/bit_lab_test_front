@@ -3,10 +3,13 @@ import ReactPaginate from 'react-paginate';
 import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import * as req from '../service/axios';
-import StatsTableRow from './StatstableRow';
+import StatsTableRow from './StatsTableRow';
 import { ReactComponent as Logo } from '../styles/images/arrow-pagination.svg';
+import Loader from './Loader';
 
 export default function StatsTable() {
+  const [isLoading, setIsLoading] = useState(true);
+
   const [totalPages, setTotalPages] = useState(0);
   const [page, setPage] = useState(-1);
   const [data, setData] = useState([]);
@@ -25,6 +28,8 @@ export default function StatsTable() {
         setTotalPages(stats.totalPages);
         setData(stats.data);
         setPage(page);
+
+        setIsLoading(false);
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -35,7 +40,9 @@ export default function StatsTable() {
     history.push(`${pathname}?page=${selected + 1}&limit=${limit}`);
   };
 
-  return (
+  return isLoading ? (
+    <Loader />
+  ) : (
     <>
       <h2 className="table__title">Users statistics</h2>
       <table className="table">
